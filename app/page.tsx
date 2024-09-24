@@ -1,10 +1,5 @@
 import NavBar from "./NavBar";
 
 export default function Home() {
-  return (
-    <div>
-      <NavBar />
-      Hello World
-    </div>
-  );
+  return <div>Hello World</div>;
 }
