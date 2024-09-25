@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-
+// const { fontFamily } = require('tailwindcss/defaultTheme');
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // fontFamily: {
+      //   inter: ['Inter', ...fontFamily.sans], // Add Inter as your default font family
+      // },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
