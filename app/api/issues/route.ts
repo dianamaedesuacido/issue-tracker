@@ -1,25 +1,30 @@
+import prisma from "@/prisma/client";
+import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import  prisma  from "@/prisma/client";
 import { issueSchema } from "../../validationSchemas";
+import { authOptions } from "../auth/authOptions";
 
 
 export async function POST(request: NextRequest) {
+    const session = await getServerSession(authOptions);
+    if (!session)
+    return NextResponse.json({}, { status: 401 });
     const body = await request.json();
-
     const validation = issueSchema.safeParse(body);
     if (!validation.success)
       return NextResponse.json(validation.error.format(), { status: 400 });
-  
-    // const user = await prisma.user.findUnique({
-    //   where: { email: body.email },
+
+    // in case of addtional checking
+    // const issue = await prisma.issue.findUnique({
+    //   where: { id: body.id },
     // });
   
-    // if (user)
+    // if (issue)
     //   return NextResponse.json(
     //     {
-    //       error: "User already exists",
+    //       error: "Issue already exists",
     //     },
-    //     { status: 400 }
+    //     { status: 404 }
     //   );
   
     const NewIssue = await prisma.issue.create({
