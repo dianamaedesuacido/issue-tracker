@@ -48,12 +48,7 @@ const NavBar = () => {
             </ul>
           </Flex>
           <Box>
-            {status === "loading" && (
-              <div>
-                {" "}
-                <Spinner /> Loading...
-              </div>
-            )}
+            {status === "loading" && <Spinner />}
             {status === "authenticated" && (
               <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
@@ -62,6 +57,7 @@ const NavBar = () => {
                     fallback="?"
                     size="2"
                     radius="full"
+                    referrerPolicy="no-referrer"
                   />
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Content>
