@@ -10,9 +10,9 @@ import {
 import classNames from "classnames";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { Skeleton } from "@/app/components";
 import { usePathname } from "next/navigation";
 import { AiFillBug } from "react-icons/ai";
-import { Spinner } from "./components";
 
 const NavBar = () => {
   return (
@@ -60,7 +60,7 @@ const NavLinks = () => {
 
 const AuthStatus = () => {
   const { status, data: session } = useSession();
-  if (status === "loading") return null;
+  if (status === "loading") return <Skeleton width="3rem" />;
   if (status === "unauthenticated")
     return (
       <Link className="nav-link" href="/api/auth/signin">
