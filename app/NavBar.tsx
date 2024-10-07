@@ -84,7 +84,7 @@ const AuthStatus = () => {
             <Text size="2">{session!.user!.email}</Text>
           </DropdownMenu.Label>
           <DropdownMenu.Item>
-            <Link href="api/auth/signout" className="ml-3">
+            <Link href="/api/auth/signout" className="ml-3">
               Sign Out
             </Link>
           </DropdownMenu.Item>
